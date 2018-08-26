@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/journal/bootstrap.min.css">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="community/">Community</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Guest</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin/">Admin</a>
+        </li>
+      </ul>
+      
+	  <form class="form-inline my-2 my-lg-0">
+        <a class="btn btn-secondary my-2 my-sm-0" href="account/">Login</a>
+      </form>
+    </div>
+</nav>
+<div class="login">
+	<form action="" method="post">
+		{% csrf_token %}
+		{% for field in login_form %}
+			<div class="form-group">
+				{{ field.label_tag }}
+				{{ field }}
+				{% if field.errors %}
+					{% for error in field.errors %}
+					<span class="help-block">{{ error }}</span>
+					{% endfor %}
+				{% endif %}
+			</div>
+		{% endfor %}
+
+		{% if login_form.non_field_errors %}
+			{% for error in login_form.non_field_errors %}
+			<p class="text-danger"><b>{{ error }}</b></p>
+			{% endfor %}
+		{% endif %}
+		<button class="btn btn-primary btn-block">로그인</button>
+	</form>
+</div>
