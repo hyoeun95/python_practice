@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>{{  post.title  }}</h1>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        수정시간 : {{  post.modify_date  }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        내용 : {{  post.content | linebreaksbr  }}
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
